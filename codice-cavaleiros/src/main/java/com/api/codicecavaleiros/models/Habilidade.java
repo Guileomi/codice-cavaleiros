@@ -12,7 +12,6 @@ public class Habilidade implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private static final long serialVersionUID = 1L;
-
     @ApiModelProperty(notes ="Nome da habilidade")
     private String nome;
     @ApiModelProperty(notes ="Basico, Especial, Ataque, Controle")
@@ -21,4 +20,12 @@ public class Habilidade implements Serializable {
     private String nivel;
     @ApiModelProperty(notes ="Descrição da habilidade")
     private String descricao;
+
+    //Isso pode ir para outro lugar
+    @ApiModelProperty(notes = "Recomendação de minima")
+    private String minimoRecomendavel;
+    @ApiModelProperty(notes = "Recomendação de média")
+    private String mediaRecomendavel;
+    @ApiModelProperty(notes = "Recomendação de maxima")
+    private String maximoRecomendavel;
 }

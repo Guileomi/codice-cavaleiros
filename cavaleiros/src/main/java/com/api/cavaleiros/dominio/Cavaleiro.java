@@ -19,9 +19,10 @@ public class Cavaleiro {
     private String especialidade;
     @NotNull
     private Double ataque;
-
     @OneToOne(cascade = CascadeType.ALL)
     private AtributoBasico atributoBasico;
+    @OneToOne(cascade = CascadeType.ALL)
+    private AtributoLuta atributoLuta;
 
     @ManyToOne
     private DeusProtetor deusProtetor;
@@ -96,6 +97,14 @@ public class Cavaleiro {
 
     public void setAtributoBasico(AtributoBasico atributoBasico) {
         this.atributoBasico = atributoBasico;
+    }
+
+    public AtributoLuta getAtributoLuta() {
+        return atributoLuta;
+    }
+
+    public void setAtributoLuta(AtributoLuta atributoLuta) {
+        this.atributoLuta = atributoLuta;
     }
 
     public DeusProtetor getDeusProtetor() {

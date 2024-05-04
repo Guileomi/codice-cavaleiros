@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 public class AtributoLuta {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @ApiModelProperty(notes ="Nivel critico fisico")

@@ -17,7 +17,4 @@ public class CavaleiroNovaForcaRequest {
         return forcaAtualizada;
     }
 
-    public void setForcaAtualizada(Double forcaAtualizada) {
-        this.forcaAtualizada = forcaAtualizada;
-    }
 }

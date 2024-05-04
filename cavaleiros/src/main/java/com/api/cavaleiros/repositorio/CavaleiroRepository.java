@@ -11,7 +11,9 @@ public interface CavaleiroRepository extends JpaRepository<Cavaleiro, Integer> {
 
     @Modifying
     @Transactional
-    @Query("update Cavaleiro c set c.forca = ?1 where c.id = ?2")
+    @Query("update Cavaleiro c set c.ataque = ?1 where c.id = ?2")
     void atualizarForca(Double novaForca, Integer id);
+
+    boolean existsById(int id);
 
 }

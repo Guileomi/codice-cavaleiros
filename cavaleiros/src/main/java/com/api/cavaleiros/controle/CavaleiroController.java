@@ -1,9 +1,12 @@
 package com.api.cavaleiros.controle;
 
+import com.api.cavaleiros.dominio.AtributoBasico;
 import com.api.cavaleiros.dominio.Cavaleiro;
+import com.api.cavaleiros.repositorio.AtributoBasicoRepository;
 import com.api.cavaleiros.repositorio.CavaleiroRepository;
 import com.api.cavaleiros.requisicao.CavaleiroNovaForcaRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,13 +18,18 @@ public class CavaleiroController {
 
     @Autowired
     private CavaleiroRepository repository;
+    @Autowired
+    private AtributoBasicoRepository atributoBasicoRepository;
 
     @PostMapping
     public ResponseEntity cadastrar(@RequestBody Cavaleiro novoCavaleiro){
         repository.save(novoCavaleiro);
+        if(novoCavaleiro.getAtributoBasico() != null && novoCavaleiro.getAtributoBasico().getId() == null){
+            atributoBasicoRepository.save(novoCavaleiro.getAtributoBasico());
+        }
+        repository.save(novoCavaleiro);
 
-        return ResponseEntity.status(201).build();
-
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @GetMapping

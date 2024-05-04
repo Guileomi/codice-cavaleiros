@@ -1,7 +1,7 @@
 package com.api.cavaleiros.dominio;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import java.time.LocalDate;
+
 
 @Entity
 public class Cavaleiro {
@@ -11,12 +11,17 @@ public class Cavaleiro {
     private Integer id;
 
     private String nome;
+    private String variante;
+    private String raridade;
+    private boolean reparado;
+    private boolean meta;
     @NotNull
-    private String constelacao;
+    private String especialidade;
     @NotNull
-    private Double forca;
-    @NotNull
-    private LocalDate dataNascimento;
+    private Double ataque;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private AtributoBasico atributoBasico;
 
     @ManyToOne
     private DeusProtetor deusProtetor;
@@ -37,27 +42,67 @@ public class Cavaleiro {
         this.nome = nome;
     }
 
-    public String getConstelacao() {
-        return constelacao;
+    public String getVariante() {
+        return variante;
     }
 
-    public void setConstelacao(String constelacao) {
-        this.constelacao = constelacao;
+    public void setVariante(String variante) {
+        this.variante = variante;
     }
 
-    public Double getForca() {
-        return forca;
+    public String getRaridade() {
+        return raridade;
     }
 
-    public void setForca(Double forca) {
-        this.forca = forca;
+    public void setRaridade(String raridade) {
+        this.raridade = raridade;
     }
 
-    public LocalDate getDataNascimento() {
-        return dataNascimento;
+    public boolean isReparado() {
+        return reparado;
     }
 
-    public void setDataNascimento(LocalDate dataNascimento) {
-        this.dataNascimento = dataNascimento;
+    public void setReparado(boolean reparado) {
+        this.reparado = reparado;
+    }
+
+    public boolean isMeta() {
+        return meta;
+    }
+
+    public void setMeta(boolean meta) {
+        this.meta = meta;
+    }
+
+    public String getEspecialidade() {
+        return especialidade;
+    }
+
+    public void setEspecialidade(String especialidade) {
+        this.especialidade = especialidade;
+    }
+
+    public Double getAtaque() {
+        return ataque;
+    }
+
+    public void setAtaque(Double ataque) {
+        this.ataque = ataque;
+    }
+
+    public AtributoBasico getAtributoBasico() {
+        return atributoBasico;
+    }
+
+    public void setAtributoBasico(AtributoBasico atributoBasico) {
+        this.atributoBasico = atributoBasico;
+    }
+
+    public DeusProtetor getDeusProtetor() {
+        return deusProtetor;
+    }
+
+    public void setDeusProtetor(DeusProtetor deusProtetor) {
+        this.deusProtetor = deusProtetor;
     }
 }
